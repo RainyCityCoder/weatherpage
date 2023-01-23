@@ -7,8 +7,10 @@ function Weather() {
   const [forecastObj, setForecastObj] = useState({});
   const [isLoading, setisLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-
+  
   useEffect(() => {
+    let apiKey = process.env.REACT_APP_API_KEY;
+
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${zipCode}&days=3&aqi=no&alerts=no`)
       .then(reply => reply.json())
       .then(
