@@ -1,0 +1,38 @@
+.App {
+  text-align: center;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* border-style: solid;
+  border-color: aqua;
+  border-width: 3px; */
+  /* flex-direction: column; */
+}
+
+.InputField {
+  text-align: center;
+  max-width: 20rem;
+  margin: auto;
+}
+
+.weather-api-img {
+  /* display: flex; */
+  /* align-content: flex-end; */
+  /* justify-content: center; */
+  max-width: 4rem;
+  margin-top: 5rem !important;
+  margin: 1rem;
+}
+
+/* .container {
+  border-style: solid;
+  border-color: aqua;
+  border-width: 1rem;
+} */
+
+.card-custom {
+  max-width: 16rem;
+  /* justify-content: center; */
+  /* border-style: solid;
+  border-color: chartreuse;
+  border-width: 3px; */
+}
