@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# weatherpage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React web app pulling data from [weatherapi.com](https://www.weatherapi.com/).
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This app was created as a mobile-friendly final project for my [JavaScript Front-End class](https://www.pce.uw.edu/courses/front-end-application-development-with-javascript). It queries weatherapi.com and renders the returned data as a three-day forecast (free weatherapi.com accounts are [limited to 3 days](https://www.weatherapi.com/pricing.aspx)). This API is used due to its high degree of flexibility in its location input; a zip/postal code, city, state, or country may be entered. This enhances user-friendliness without requiring a larger time investment or codebase, and possibly a second API call, to handle geolocation. Conversely, this means that weather data for larger areas may be less optimal than could be attained via in-app interpretation of user input.
 
-### `npm start`
+### Technologies used:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [react-router](https://www.npmjs.com/package/react-router) is used to built out the page's two views (a form and a forecast view).
+  - `useParams` is used to pass the data for a particular day to a the WeatherCard.jsx component so it may be parsed.
+  - `Link` provides functionality to return to the Form.jsx component.
+  - `useNavigate` assigns the forecast view a URL using the user-supplied location.
+- [Bootstrap](https://getbootstrap.com/) is used for the overall styling of the page.
+- Additional CSS is used to provide finishing touches.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Forking
 
-### `npm test`
+### Prerequisites:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- `Node.js` and `npm` [installed](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your system.
 
-### `npm run build`
+### Instructions:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+After [forking](https://docs.github.com/en/get-started/quickstart/fork-a-repo) and [cloning](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) this repository, you will need to navigate inside the root `./weatherpage` directory, and run `npm install`. For example: if you cloned the repo to your Ubuntu Desktop, you would `$ cd ~/Desktop/weatherpage`, then enter `$ npm install`. This installation may take a while.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+In order to succesfully run this project, once forked, an API key will be required. Browse to [weatherapi.com's signup page](https://www.weatherapi.com/signup.aspx) and create an account, then log in. Once logged in, you will find a "Regenerate key" button at the bottom of the weatherapi.com/my page. Use this to generate a key.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Create a `.env` file in the `./weatherpage` directory, and enter `REACT_APP_API_KEY="YOUR_KEY_HERE"` into this file, replacing the text `YOUR_KEY_HERE` with your new API key. Keep the quote marks.
 
-### `npm run eject`
+From your `./weatherpage` directory, the command `npm start` or `npm run start` may be used to initialize a local web server hosting the `weatherpage` app. This should automatically open a browser window and auto-navigate to the app, however you may manually do so if necessary. The URL will likely be `http://localhost:3000`, unless your system is using a port other than 3000.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## User Interaction
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The app itself is simple. The first page that appears will ask the user for a location. This may be a wide range of inputs, from text names of countries or cities, to numerical zip codes, to alphanumerical post codes. Once input and the "Enter" button pressed, the page switches to a forecast view. Pressing the "Enter a different location" button will return the view to the location form.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If an API connection error occurs, an error message will be displayed.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Deploying your own weatherpage app
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Deployment instructions vary based on the web host you've selected. Refer to their documentation for steps.
