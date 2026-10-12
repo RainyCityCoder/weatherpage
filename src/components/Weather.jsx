@@ -7,21 +7,36 @@ function Weather() {
   const [forecastObj, setForecastObj] = useState({});
   const [isLoading, setisLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  
+
   useEffect(() => {
     let apiKey = process.env.REACT_APP_API_KEY;
 
+    if (!apiKey) {
+      setHasError(true);
+      setisLoading(false);
+      return;
+    }
+
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${zipCode}&days=3&aqi=no&alerts=no`)
-      .then(reply => reply.json())
-      .then(
-        json => {
-          setForecastObj(json);
-          setisLoading(false);
-        }, 
-        error => {
-          setHasError(true);
-          setisLoading(false);
-        })
+      .then((resp) => {
+        if (!resp.ok) {
+          throw new Error(`HTTP ${resp.status}`);
+        }
+        return resp.json();
+      })
+      .then((json) => {
+        // WeatherAPI returns an `error` object on failure
+        if (json.error) {
+          throw new Error(json.error.message);
+        }
+        setForecastObj(json);
+        setisLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setHasError(true);
+        setisLoading(false);
+      });
   }, [zipCode])
 
   if (isLoading) {
@@ -32,22 +47,22 @@ function Weather() {
     return <div>Something went wrong, try again later!</div>
   }
 
-// Setting "days" to the array containing daily forecasts
+  // Setting "days" to the array containing daily forecasts
   const days = forecastObj.forecast.forecastday;
-  
+
   return (
     <div className="container">
       {days.map((day, index) => {
-        return(
+        return (
           <>
             <WeatherCard
-            key={index}
-            day={day} 
+              key={index}
+              day={day}
             />
           </>
-          )
-        })}
-      <Link 
+        )
+      })}
+      <Link
         to="/"
         className="btn btn-primary"
         role="button"
