@@ -18,25 +18,16 @@ function Weather() {
     }
 
     fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${zipCode}&days=3&aqi=no&alerts=no`)
-      .then((resp) => {
-        if (!resp.ok) {
-          throw new Error(`HTTP ${resp.status}`);
-        }
-        return resp.json();
-      })
-      .then((json) => {
-        // WeatherAPI returns an `error` object on failure
-        if (json.error) {
-          throw new Error(json.error.message);
-        }
-        setForecastObj(json);
-        setisLoading(false);
-      })
-      .catch((err) => {
-        console.error(err);
-        setHasError(true);
-        setisLoading(false);
-      });
+      .then(reply => reply.json())
+      .then(
+        json => {
+          setForecastObj(json);
+          setisLoading(false);
+        },
+        error => {
+          setHasError(true);
+          setisLoading(false);
+        })
   }, [zipCode])
 
   if (isLoading) {

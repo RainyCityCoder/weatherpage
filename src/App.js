@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import Weather from './components/Weather';
 import Form from './components/Form';
-import { BrowserRouter as Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {

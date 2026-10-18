@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 function WeatherCard({ day }) {
   return (
@@ -22,13 +21,9 @@ function WeatherCard({ day }) {
             {day.day.condition.text}
           </p>
         </div>
-      </div> 
-    </div> 
+      </div>
+    </div>
   )
-}
-
-WeatherCard.propTypes = {
-  day: PropTypes.object.isRequired,
 }
 
 export default WeatherCard
