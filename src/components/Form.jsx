@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Form() {
+function Form() {
   const [zipCode, setZipCode] = useState('');
   const navigate = useNavigate();
   const getLoc = (e) => {
@@ -11,17 +11,17 @@ export default function Form() {
 
   return (
     <div>
-      <form 
-//Navigate separately from setting location value      
+      <form
+        //Navigate separately from setting location value      
         onSubmit={getLoc}
         className="form-floating mt-4 mb-2 InputField">
-        <input 
+        <input
           type="text"
-// Set value separately from navigation          
-          onChange = {(e) => setZipCode(e.target.value)}
+          // Set value separately from navigation          
+          onChange={(e) => setZipCode(e.target.value)}
           required
-          className="form-control" 
-          id="zip" 
+          className="form-control"
+          id="zip"
           placeholder="1"
         />
         <label htmlFor="zip">Post Code or City for best accuracy</label>
@@ -39,3 +39,5 @@ export default function Form() {
     </div>
   )
 }
+
+export default Form

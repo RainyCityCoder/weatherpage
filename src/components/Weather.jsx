@@ -5,7 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 function Weather() {
   const { zipCode } = useParams();
   const [forecastObj, setForecastObj] = useState({});
-  const [isLoading, setisLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
