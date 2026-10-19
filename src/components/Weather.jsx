@@ -13,7 +13,7 @@ function Weather() {
 
     if (!apiKey) {
       setHasError(true);
-      setisLoading(false);
+      setIsLoading(false);
       return;
     }
 
@@ -22,11 +22,11 @@ function Weather() {
       .then(
         json => {
           setForecastObj(json);
-          setisLoading(false);
+          setIsLoading(false);
         },
         error => {
           setHasError(true);
-          setisLoading(false);
+          setIsLoading(false);
         })
   }, [zipCode])
 
